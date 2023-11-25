@@ -3,13 +3,27 @@ package com.projetobruno.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 //Serializable é utilizado para que os objetos possam ser transformados em cadeias
 //de bytes, fazendo com que o objeto possa trafegar na rede, gravado em arquivos, etc
+
+//Annotations do JPA necessarias para instruir como vai ocorrer a conversão de objetos para modelo relacional
+
+
+@Entity
+@Table(name = "tb_user")//Evitar conflito com a keyword do banco
 public class User implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id //Primary key
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto increment
 	private Long id;
 	private String name;
 	private String email;
